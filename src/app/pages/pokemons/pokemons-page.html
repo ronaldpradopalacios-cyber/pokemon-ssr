@@ -1,9 +1,9 @@
 <h1 class="text-3xl font-bold">Listado de POKEMONS</h1>
-<h2 class="text-xl">Pagina actual</h2>
+<h2 class="text-xl">Pagina actual: {{ currentPage() }}</h2>
 
 <hr class="my-2" />
 
-@if (!isLoading()) {
+@if (pokemons()) {
   <pokemons-list [pokemons]="pokemons()" />
 } @else {
   <!-- POKEMON LIST SKELETON... -->
@@ -13,7 +13,7 @@
 
 
 <!-- botones de anterior y siguiente -->
-<div class="flex justify-between">
-  <button class="bg-blue-500 text-white px-4 py-2 rounded mt-2">Anterior</button>
-  <button class="bg-blue-500 text-white px-4 py-2 rounded mt-2">Siguiente</button>
+<div class="flex justify-between mb-3">
+  <button class="bg-blue-500 text-white px-4 py-2 rounded mt-2 cursor-pointer" (click)="loadPokemons(-1)">Anterior</button>
+  <button class="bg-blue-500 text-white px-4 py-2 rounded mt-2 cursor-pointer" (click)="loadPokemons(+1)">Siguiente</button>
 </div>
